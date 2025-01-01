@@ -1,3 +1,5 @@
+import 'package:dartz/dartz.dart';
+
 abstract class SplashRepository {
-  Future<String> get getToken;
+  Future<Either> get accessToken;
 }

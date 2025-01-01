@@ -1,13 +1,11 @@
+import 'package:dartz/dartz.dart';
 import 'package:duzify/data/splash/sources/splash_remote_source.dart';
 import 'package:duzify/domain/splash/repositories/splash_repository.dart';
+import 'package:duzify/service_locator.dart';
 
 class SplashRepositoryImpl implements SplashRepository {
-  final SplashRemoteSource remoteSource;
-
-  const SplashRepositoryImpl({
-    required this.remoteSource,
-  });
-
   @override
-  Future<String> get getToken => remoteSource.getToken;
+  Future<Either> get accessToken async {
+    return await sl<SplashRemoteSource>().accessToken;
+  }
 }

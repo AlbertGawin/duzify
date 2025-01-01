@@ -2,14 +2,14 @@
     "version": "0.2.0",
     "configurations": [
         {
-        "name": "Launch",
-        "request": "launch",
-        "type": "dart",
-        "program": "lib/main.dart",
-        "args": [
-            "--dart-define-from-file",
-            "api-keys.json"
-        ]
+            "name": "Launch",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main.dart",
+            "args": [
+                "--dart-define", "CLIENT_ID=fd1ae7830c7341f4b74fcf945938997a",
+                "--dart-define", "CLIENT_SECRET=07523d99889041389eeedde351acac49"
+            ]
         }
     ]
 }
