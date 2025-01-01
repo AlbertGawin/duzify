@@ -4,13 +4,14 @@ import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
   static final lightTheme = ThemeData(
-    primaryColor: AppColors.primary,
-    scaffoldBackgroundColor: AppColors.lightBackground,
+    primaryColor: AppColors.green,
+    colorScheme: ColorScheme.light(primary: AppColors.green),
+    scaffoldBackgroundColor: AppColors.white,
     brightness: Brightness.light,
-    textTheme: GoogleFonts.lexendTextTheme(),
+    fontFamily: 'HelveticaNeue',
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-        backgroundColor: AppColors.primary,
+        backgroundColor: AppColors.green,
         textStyle: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
       ),
@@ -18,13 +19,15 @@ class AppTheme {
   );
 
   static final darkTheme = ThemeData(
-    primaryColor: AppColors.primary,
-    scaffoldBackgroundColor: AppColors.darkBackground,
+    primaryColor: AppColors.green,
+    colorScheme: ColorScheme.dark(primary: AppColors.green),
+    scaffoldBackgroundColor: AppColors.black,
     brightness: Brightness.dark,
     textTheme: GoogleFonts.lexendTextTheme(),
+    fontFamily: 'HelveticaNeue',
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-        backgroundColor: AppColors.primary,
+        backgroundColor: AppColors.green,
         textStyle: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
       ),

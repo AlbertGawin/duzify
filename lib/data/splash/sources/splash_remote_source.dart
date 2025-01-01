@@ -12,8 +12,8 @@ class SplashRemoteSourceImpl implements SplashRemoteSource {
     try {
       var url = Uri.https("accounts.spotify.com", "api/token", {
         "grant_type": "client_credentials",
-        "client_id": String.fromEnvironment('CLIENT_ID'),
-        "client_secret": String.fromEnvironment('CLIENT_SECRET'),
+        "client_id": "fd1ae7830c7341f4b74fcf945938997a",
+        "client_secret": "07523d99889041389eeedde351acac49",
       });
 
       var response = await http.post(url, headers: {
