@@ -1,5 +1,6 @@
 import 'package:duzify/core/configs/assets/app_vectors.dart';
 import 'package:duzify/core/configs/theme/app_colors.dart';
+import 'package:duzify/presentation/home/pages/home.dart';
 import 'package:duzify/presentation/splash/bloc/cubit/splash_cubit.dart';
 import 'package:duzify/presentation/splash/bloc/cubit/splash_state.dart';
 import 'package:flutter/material.dart';
@@ -18,6 +19,8 @@ class SplashPage extends StatelessWidget {
           builder: (context, state) {
             if (state is SplashFailure) {
               return Center(child: Text(state.message));
+            } else if (state is SplashSuccess) {
+              return const HomePage();
             } else {
               return Center(
                 child: SvgPicture.asset(
