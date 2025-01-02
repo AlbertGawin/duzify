@@ -1,4 +1,5 @@
 import 'package:duzify/core/configs/theme/app_colors.dart';
+import 'package:duzify/presentation/search/pages/search.dart';
 import 'package:flutter/material.dart';
 
 class StickySearchBar extends StatelessWidget {
@@ -11,30 +12,38 @@ class StickySearchBar extends StatelessWidget {
       delegate: _SliverAppBarDelegate(
         minHeight: 64.0,
         maxHeight: 64.0,
-        child: Container(
-          width: double.infinity,
-          color: AppColors.black,
-          padding: const EdgeInsets.symmetric(vertical: 8),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(4),
-            child: Container(
-              color: Colors.white,
-              child: Padding(
-                padding: const EdgeInsets.all(8),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Icon(Icons.search, size: 30, color: AppColors.black),
-                    SizedBox(width: 8),
-                    Text(
-                      'Czego chcesz posłuchać?',
-                      style: TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.bold,
-                        color: AppColors.gray,
+        child: GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => SearchPage()),
+            );
+          },
+          child: Container(
+            width: double.infinity,
+            color: AppColors.black,
+            padding: const EdgeInsets.symmetric(vertical: 8),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(4),
+              child: Container(
+                color: Colors.white,
+                child: Padding(
+                  padding: const EdgeInsets.all(8),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Icon(Icons.search, size: 30, color: AppColors.darkGray),
+                      SizedBox(width: 8),
+                      Text(
+                        'Czego chcesz posłuchać?',
+                        style: TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                          color: AppColors.darkGray,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
