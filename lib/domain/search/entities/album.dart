@@ -1,18 +1,23 @@
+import 'package:duzify/domain/search/entities/external_urls.dart';
+import 'package:duzify/domain/search/entities/image.dart';
+import 'package:duzify/domain/search/entities/restrictions.dart';
+import 'package:duzify/domain/search/entities/simplified_artist.dart';
+
 class AlbumEntity {
   final String albumType;
   final int totalTracks;
   final List<String> availableMarkets;
-  final ExternalUrls externalUrls;
+  final ExternalUrlsEntity externalUrls;
   final String href;
   final String id;
-  final List<ImageObject> images;
+  final List<ImageEntity> images;
   final String name;
   final String releaseDate;
   final String releaseDatePrecision;
-  final Restrictions restrictions;
+  final RestrictionsEntity restrictions;
   final String type;
   final String uri;
-  final List<SimplifiedArtistObject> artists;
+  final List<SimplifiedArtistEntity> artists;
 
   const AlbumEntity({
     required this.albumType,

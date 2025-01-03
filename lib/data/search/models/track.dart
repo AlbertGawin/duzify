@@ -16,7 +16,7 @@ class TrackModel {
   final String href;
   final String id;
   final bool isPlayable;
-  final RestrictionsModel restrictions;
+  final RestrictionsModel? restrictions;
   final String name;
   final int popularity;
   final int trackNumber;
@@ -59,7 +59,9 @@ class TrackModel {
       href: json['href'],
       id: json['id'],
       isPlayable: json['is_playable'],
-      restrictions: RestrictionsModel.fromJson(json['restrictions']),
+      restrictions: json['restrictions'] != null
+          ? RestrictionsModel.fromJson(json['restrictions'])
+          : null,
       name: json['name'],
       popularity: json['popularity'],
       trackNumber: json['track_number'],

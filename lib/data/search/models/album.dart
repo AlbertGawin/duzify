@@ -14,7 +14,7 @@ class AlbumModel {
   final String name;
   final String releaseDate;
   final String releaseDatePrecision;
-  final RestrictionsModel restrictions;
+  final RestrictionsModel? restrictions;
   final String type;
   final String uri;
   final List<SimplifiedArtistModel> artists;
@@ -50,7 +50,9 @@ class AlbumModel {
       name: json['name'],
       releaseDate: json['release_date'],
       releaseDatePrecision: json['release_date_precision'],
-      restrictions: RestrictionsModel.fromJson(json['restrictions']),
+      restrictions: json['restrictions'] != null
+          ? RestrictionsModel.fromJson(json['restrictions'])
+          : null,
       type: json['type'],
       uri: json['uri'],
       artists: List<SimplifiedArtistModel>.from(

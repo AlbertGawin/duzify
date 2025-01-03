@@ -27,8 +27,13 @@ class PlaylistsModel {
       offset: json['offset'],
       previous: json['previous'],
       total: json['total'],
-      items: List<PlaylistModel>.from(
-          json['items'].map((x) => PlaylistModel.fromJson(x))),
+      items: json['items'] != null
+          ? List<PlaylistModel>.from(
+              json['items']
+                  .map((x) => x != null ? PlaylistModel.fromJson(x) : null)
+                  .where((x) => x != null),
+            )
+          : [],
     );
   }
 }

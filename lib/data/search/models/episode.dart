@@ -18,10 +18,10 @@ class EpisodeModel {
   final String name;
   final String releaseDate;
   final String releaseDatePrecision;
-  final ResumePointModel resumePoint;
+  final ResumePointModel? resumePoint;
   final String type;
   final String uri;
-  final RestrictionsModel restrictions;
+  final RestrictionsModel? restrictions;
 
   const EpisodeModel({
     required this.description,
@@ -62,10 +62,14 @@ class EpisodeModel {
       name: json['name'],
       releaseDate: json['release_date'],
       releaseDatePrecision: json['release_date_precision'],
-      resumePoint: ResumePointModel.fromJson(json['resume_point']),
+      resumePoint: json['resume_point'] != null
+          ? ResumePointModel.fromJson(json['resume_point'])
+          : null,
       type: json['type'],
       uri: json['uri'],
-      restrictions: RestrictionsModel.fromJson(json['restrictions']),
+      restrictions: json['restrictions'] != null
+          ? RestrictionsModel.fromJson(json['restrictions'])
+          : null,
     );
   }
 }

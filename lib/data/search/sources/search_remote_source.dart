@@ -14,15 +14,7 @@ class SearchRemoteSourceImpl implements SearchRemoteSource {
   @override
   Future<Either> search(SearchReq searchReq) async {
     try {
-      var url = Uri.https(AppURLs.basicApi, AppURLs.search, {
-        "q": searchReq.q,
-        "type": searchReq.type.join(","),
-        if (searchReq.market != null) "market": searchReq.market!,
-        if (searchReq.limit != null) "limit": searchReq.limit.toString(),
-        if (searchReq.offset != null) "offset": searchReq.offset.toString(),
-        if (searchReq.includeExternal != null)
-          "includeExternal": searchReq.includeExternal!,
-      });
+      var url = Uri.https(AppURLs.basicApi, AppURLs.search, searchReq.toJson());
 
       var response = await http.get(url, headers: {
         "Authorization": "Bearer ${AuthManager().accessToken}",
