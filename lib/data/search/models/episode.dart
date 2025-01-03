@@ -2,46 +2,28 @@ import 'package:duzify/data/search/models/external_urls.dart';
 import 'package:duzify/data/search/models/image.dart';
 import 'package:duzify/data/search/models/restrictions.dart';
 import 'package:duzify/data/search/models/resume_point.dart';
+import 'package:duzify/domain/search/entities/episode.dart';
 
-class EpisodeModel {
-  final String description;
-  final String htmlDescription;
-  final int durationMs;
-  final bool explicit;
-  final ExternalUrlsModel externalUrls;
-  final String href;
-  final String id;
-  final List<ImageModel> images;
-  final bool isExternallyHosted;
-  final bool isPlayable;
-  final List<String> languages;
-  final String name;
-  final String releaseDate;
-  final String releaseDatePrecision;
-  final ResumePointModel? resumePoint;
-  final String type;
-  final String uri;
-  final RestrictionsModel? restrictions;
-
+class EpisodeModel extends EpisodeEntity {
   const EpisodeModel({
-    required this.description,
-    required this.htmlDescription,
-    required this.durationMs,
-    required this.explicit,
-    required this.externalUrls,
-    required this.href,
-    required this.id,
-    required this.images,
-    required this.isExternallyHosted,
-    required this.isPlayable,
-    required this.languages,
-    required this.name,
-    required this.releaseDate,
-    required this.releaseDatePrecision,
-    required this.resumePoint,
-    required this.type,
-    required this.uri,
-    required this.restrictions,
+    required super.description,
+    required super.htmlDescription,
+    required super.durationMs,
+    required super.explicit,
+    required super.externalUrls,
+    required super.href,
+    required super.id,
+    required super.images,
+    required super.isExternallyHosted,
+    required super.isPlayable,
+    required super.languages,
+    required super.name,
+    required super.releaseDate,
+    required super.releaseDatePrecision,
+    required super.resumePoint,
+    required super.type,
+    required super.uri,
+    required super.restrictions,
   });
 
   factory EpisodeModel.fromJson(Map<String, dynamic> json) {

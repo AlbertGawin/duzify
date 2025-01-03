@@ -1,22 +1,15 @@
 import 'package:duzify/data/search/models/playlist.dart';
+import 'package:duzify/domain/search/entities/playlists.dart';
 
-class PlaylistsModel {
-  final String href;
-  final int limit;
-  final String? next;
-  final int offset;
-  final String? previous;
-  final int total;
-  final List<PlaylistModel> items;
-
+class PlaylistsModel extends PlaylistsEntity {
   const PlaylistsModel({
-    required this.href,
-    required this.limit,
-    required this.next,
-    required this.offset,
-    required this.previous,
-    required this.total,
-    required this.items,
+    required super.href,
+    required super.limit,
+    required super.next,
+    required super.offset,
+    required super.previous,
+    required super.total,
+    required super.items,
   });
 
   factory PlaylistsModel.fromJson(Map<String, dynamic> json) {

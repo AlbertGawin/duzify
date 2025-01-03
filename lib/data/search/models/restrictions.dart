@@ -1,8 +1,8 @@
-class RestrictionsModel {
-  final String reason;
+import 'package:duzify/domain/search/entities/restrictions.dart';
 
+class RestrictionsModel extends RestrictionsEntity {
   const RestrictionsModel({
-    required this.reason,
+    required super.reason,
   });
 
   factory RestrictionsModel.fromJson(Map<String, dynamic> json) {

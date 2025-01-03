@@ -3,7 +3,7 @@ import 'package:duzify/domain/search/entities/followers.dart';
 
 class OwnerEntity {
   final ExternalUrlsEntity externalUrls;
-  final FollowersEntity followers;
+  final FollowersEntity? followers;
   final String href;
   final String id;
   final String type;

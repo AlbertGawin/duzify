@@ -1,8 +1,8 @@
-class NarratorModel {
-  final String name;
+import 'package:duzify/domain/search/entities/narrator.dart';
 
+class NarratorModel extends NarratorEntity {
   const NarratorModel({
-    required this.name,
+    required super.name,
   });
 
   factory NarratorModel.fromJson(Map<String, dynamic> json) {

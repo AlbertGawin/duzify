@@ -1,12 +1,10 @@
-class ImageModel {
-  final String url;
-  final int? height;
-  final int? width;
+import 'package:duzify/domain/search/entities/image.dart';
 
+class ImageModel extends ImageEntity {
   const ImageModel({
-    required this.url,
-    required this.height,
-    required this.width,
+    required super.url,
+    required super.height,
+    required super.width,
   });
 
   factory ImageModel.fromJson(Map<String, dynamic> json) {

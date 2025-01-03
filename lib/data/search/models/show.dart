@@ -1,44 +1,27 @@
 import 'package:duzify/data/search/models/copyright.dart';
 import 'package:duzify/data/search/models/external_urls.dart';
 import 'package:duzify/data/search/models/image.dart';
+import 'package:duzify/domain/search/entities/show.dart';
 
-class ShowModel {
-  final List<String> availableMarkets;
-  final List<CopyrightModel> copyrights;
-  final String description;
-  final String htmlDescription;
-  final bool explicit;
-  final ExternalUrlsModel externalUrls;
-  final String href;
-  final String id;
-  final List<ImageModel> images;
-  final bool isExternallyHosted;
-  final List<String> languages;
-  final String mediaType;
-  final String name;
-  final String publisher;
-  final String type;
-  final String uri;
-  final int totalEpisodes;
-
+class ShowModel extends ShowEntity {
   const ShowModel({
-    required this.availableMarkets,
-    required this.copyrights,
-    required this.description,
-    required this.htmlDescription,
-    required this.explicit,
-    required this.externalUrls,
-    required this.href,
-    required this.id,
-    required this.images,
-    required this.isExternallyHosted,
-    required this.languages,
-    required this.mediaType,
-    required this.name,
-    required this.publisher,
-    required this.type,
-    required this.uri,
-    required this.totalEpisodes,
+    required super.availableMarkets,
+    required super.copyrights,
+    required super.description,
+    required super.htmlDescription,
+    required super.explicit,
+    required super.externalUrls,
+    required super.href,
+    required super.id,
+    required super.images,
+    required super.isExternallyHosted,
+    required super.languages,
+    required super.mediaType,
+    required super.name,
+    required super.publisher,
+    required super.type,
+    required super.uri,
+    required super.totalEpisodes,
   });
 
   factory ShowModel.fromJson(Map<String, dynamic> json) {

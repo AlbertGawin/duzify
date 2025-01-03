@@ -16,7 +16,7 @@ class TrackEntity {
   final String href;
   final String id;
   final bool isPlayable;
-  final RestrictionsEntity restrictions;
+  final RestrictionsEntity? restrictions;
   final String name;
   final int popularity;
   final int trackNumber;

@@ -1,20 +1,14 @@
 import 'package:duzify/data/search/models/external_urls.dart';
+import 'package:duzify/domain/search/entities/simplified_artist.dart';
 
-class SimplifiedArtistModel {
-  final ExternalUrlsModel externalUrls;
-  final String href;
-  final String id;
-  final String name;
-  final String type;
-  final String uri;
-
+class SimplifiedArtistModel extends SimplifiedArtistEntity {
   const SimplifiedArtistModel({
-    required this.externalUrls,
-    required this.href,
-    required this.id,
-    required this.name,
-    required this.type,
-    required this.uri,
+    required super.externalUrls,
+    required super.href,
+    required super.id,
+    required super.name,
+    required super.type,
+    required super.uri,
   });
 
   factory SimplifiedArtistModel.fromJson(Map<String, dynamic> json) {

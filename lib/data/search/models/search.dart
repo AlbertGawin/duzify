@@ -5,24 +5,17 @@ import 'package:duzify/data/search/models/episodes.dart';
 import 'package:duzify/data/search/models/playlists.dart';
 import 'package:duzify/data/search/models/shows.dart';
 import 'package:duzify/data/search/models/tracks.dart';
+import 'package:duzify/domain/search/entities/search.dart';
 
-class SearchModel {
-  final TracksModel tracks;
-  final ArtistsModel artists;
-  final AlbumsModel albums;
-  final PlaylistsModel playlists;
-  final ShowsModel shows;
-  final EpisodesModel episodes;
-  final AudiobooksModel audiobooks;
-
+class SearchModel extends SearchEntity {
   const SearchModel({
-    required this.tracks,
-    required this.artists,
-    required this.albums,
-    required this.playlists,
-    required this.shows,
-    required this.episodes,
-    required this.audiobooks,
+    required super.tracks,
+    required super.artists,
+    required super.albums,
+    required super.playlists,
+    required super.shows,
+    required super.episodes,
+    required super.audiobooks,
   });
 
   factory SearchModel.fromJson(Map<String, dynamic> json) {

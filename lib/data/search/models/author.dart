@@ -1,8 +1,8 @@
-class AuthorModel {
-  final String name;
+import 'package:duzify/domain/search/entities/author.dart';
 
+class AuthorModel extends AuthorEntity {
   const AuthorModel({
-    required this.name,
+    required super.name,
   });
 
   factory AuthorModel.fromJson(Map<String, dynamic> json) {

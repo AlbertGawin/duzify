@@ -2,36 +2,23 @@ import 'package:duzify/data/search/models/external_urls.dart';
 import 'package:duzify/data/search/models/image.dart';
 import 'package:duzify/data/search/models/owner.dart';
 import 'package:duzify/data/search/models/playlist_tracks.dart';
+import 'package:duzify/domain/search/entities/playlist.dart';
 
-class PlaylistModel {
-  final bool collaborative;
-  final String description;
-  final ExternalUrlsModel externalUrls;
-  final String href;
-  final String id;
-  final List<ImageModel> images;
-  final String name;
-  final OwnerModel owner;
-  final bool public;
-  final String snapshotId;
-  final PlaylistTracksModel tracks;
-  final String type;
-  final String uri;
-
+class PlaylistModel extends PlaylistEntity {
   const PlaylistModel({
-    required this.collaborative,
-    required this.description,
-    required this.externalUrls,
-    required this.href,
-    required this.id,
-    required this.images,
-    required this.name,
-    required this.owner,
-    required this.public,
-    required this.snapshotId,
-    required this.tracks,
-    required this.type,
-    required this.uri,
+    required super.collaborative,
+    required super.description,
+    required super.externalUrls,
+    required super.href,
+    required super.id,
+    required super.images,
+    required super.name,
+    required super.owner,
+    required super.public,
+    required super.snapshotId,
+    required super.tracks,
+    required super.type,
+    required super.uri,
   });
 
   factory PlaylistModel.fromJson(Map<String, dynamic> json) {

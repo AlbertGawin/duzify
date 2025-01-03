@@ -18,6 +18,8 @@ class SearchPage extends StatelessWidget {
         body: BlocBuilder<SearchCubit, SearchState>(
           builder: (context, state) {
             if (state is SearchSuccess) {
+              final result = state.result;
+
               return const SizedBox();
             } else {
               return const IntroText();

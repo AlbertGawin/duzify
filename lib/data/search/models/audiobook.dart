@@ -3,48 +3,29 @@ import 'package:duzify/data/search/models/copyright.dart';
 import 'package:duzify/data/search/models/external_urls.dart';
 import 'package:duzify/data/search/models/image.dart';
 import 'package:duzify/data/search/models/narrator.dart';
+import 'package:duzify/domain/search/entities/audiobook.dart';
 
-class AudiobookModel {
-  final List<AuthorModel> authors;
-  final List<String> availableMarkets;
-  final List<CopyrightModel> copyrights;
-  final String description;
-  final String htmlDescription;
-  final String edition;
-  final bool explicit;
-  final ExternalUrlsModel externalUrls;
-  final String href;
-  final String id;
-  final List<ImageModel> images;
-  final List<String> languages;
-  final String mediaType;
-  final String name;
-  final NarratorModel narrator;
-  final String publisher;
-  final String type;
-  final String uri;
-  final int totalChapters;
-
+class AudiobookModel extends AudiobookEntity {
   const AudiobookModel({
-    required this.authors,
-    required this.availableMarkets,
-    required this.copyrights,
-    required this.description,
-    required this.htmlDescription,
-    required this.edition,
-    required this.explicit,
-    required this.externalUrls,
-    required this.href,
-    required this.id,
-    required this.images,
-    required this.languages,
-    required this.mediaType,
-    required this.name,
-    required this.narrator,
-    required this.publisher,
-    required this.type,
-    required this.uri,
-    required this.totalChapters,
+    required super.authors,
+    required super.availableMarkets,
+    required super.copyrights,
+    required super.description,
+    required super.htmlDescription,
+    required super.edition,
+    required super.explicit,
+    required super.externalUrls,
+    required super.href,
+    required super.id,
+    required super.images,
+    required super.languages,
+    required super.mediaType,
+    required super.name,
+    required super.narrator,
+    required super.publisher,
+    required super.type,
+    required super.uri,
+    required super.totalChapters,
   });
 
   factory AudiobookModel.fromJson(Map<String, dynamic> json) {

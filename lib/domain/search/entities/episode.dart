@@ -18,10 +18,10 @@ class EpisodeEntity {
   final String name;
   final String releaseDate;
   final String releaseDatePrecision;
-  final ResumePointEntity resumePoint;
+  final ResumePointEntity? resumePoint;
   final String type;
   final String uri;
-  final RestrictionsEntity restrictions;
+  final RestrictionsEntity? restrictions;
 
   const EpisodeEntity({
     required this.description,

@@ -1,14 +1,9 @@
-class SearchReq {
-  final String q;
-  final List<String> type;
-  final String? market;
-  final int? limit;
-  final int? offset;
-  final String? includeExternal;
+import 'package:duzify/domain/search/entities/search_req.dart';
 
+class SearchReq extends SearchReqEntity {
   const SearchReq({
-    required this.q,
-    this.type = const [
+    required super.q,
+    super.type = const [
       "album",
       "artist",
       "playlist",
@@ -17,10 +12,10 @@ class SearchReq {
       "episode",
       "audiobook"
     ],
-    this.market,
-    this.limit,
-    this.offset,
-    this.includeExternal,
+    super.market,
+    super.limit,
+    super.offset,
+    super.includeExternal,
   });
 
   factory SearchReq.fromJson(Map<String, dynamic> json) {

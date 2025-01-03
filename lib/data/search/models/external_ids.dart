@@ -1,12 +1,10 @@
-class ExternalIdsModel {
-  final String isrc;
-  final String? ean;
-  final String? upc;
+import 'package:duzify/domain/search/entities/external_ids.dart';
 
+class ExternalIdsModel extends ExternalIdsEntity {
   const ExternalIdsModel({
-    required this.isrc,
-    required this.ean,
-    required this.upc,
+    required super.isrc,
+    required super.ean,
+    required super.upc,
   });
 
   factory ExternalIdsModel.fromJson(Map<String, dynamic> json) {

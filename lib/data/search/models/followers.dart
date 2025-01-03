@@ -1,10 +1,9 @@
-class FollowersModel {
-  final String? href;
-  final int total;
+import 'package:duzify/domain/search/entities/followers.dart';
 
+class FollowersModel extends FollowersEntity {
   const FollowersModel({
-    required this.href,
-    required this.total,
+    required super.href,
+    required super.total,
   });
 
   factory FollowersModel.fromJson(Map<String, dynamic> json) {

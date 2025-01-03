@@ -1,30 +1,20 @@
 import 'package:duzify/data/search/models/external_urls.dart';
 import 'package:duzify/data/search/models/followers.dart';
 import 'package:duzify/data/search/models/image.dart';
+import 'package:duzify/domain/search/entities/artist.dart';
 
-class ArtistModel {
-  final ExternalUrlsModel externalUrls;
-  final FollowersModel followers;
-  final List<String> genres;
-  final String href;
-  final String id;
-  final List<ImageModel> images;
-  final String name;
-  final int popularity;
-  final String type;
-  final String uri;
-
+class ArtistModel extends ArtistEntity {
   const ArtistModel({
-    required this.externalUrls,
-    required this.followers,
-    required this.genres,
-    required this.href,
-    required this.id,
-    required this.images,
-    required this.name,
-    required this.popularity,
-    required this.type,
-    required this.uri,
+    required super.externalUrls,
+    required super.followers,
+    required super.genres,
+    required super.href,
+    required super.id,
+    required super.images,
+    required super.name,
+    required super.popularity,
+    required super.type,
+    required super.uri,
   });
 
   factory ArtistModel.fromJson(Map<String, dynamic> json) {

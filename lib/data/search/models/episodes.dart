@@ -1,22 +1,15 @@
 import 'package:duzify/data/search/models/episode.dart';
+import 'package:duzify/domain/search/entities/episodes.dart';
 
-class EpisodesModel {
-  final String href;
-  final int limit;
-  final String? next;
-  final int offset;
-  final String? previous;
-  final int total;
-  final List<EpisodeModel> items;
-
+class EpisodesModel extends EpisodesEntity {
   const EpisodesModel({
-    required this.href,
-    required this.limit,
-    required this.next,
-    required this.offset,
-    required this.previous,
-    required this.total,
-    required this.items,
+    required super.href,
+    required super.limit,
+    required super.next,
+    required super.offset,
+    required super.previous,
+    required super.total,
+    required super.items,
   });
 
   factory EpisodesModel.fromJson(Map<String, dynamic> json) {

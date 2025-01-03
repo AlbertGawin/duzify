@@ -2,38 +2,24 @@ import 'package:duzify/data/search/models/external_urls.dart';
 import 'package:duzify/data/search/models/image.dart';
 import 'package:duzify/data/search/models/restrictions.dart';
 import 'package:duzify/data/search/models/simplified_artist.dart';
+import 'package:duzify/domain/search/entities/album.dart';
 
-class AlbumModel {
-  final String albumType;
-  final int totalTracks;
-  final List<String> availableMarkets;
-  final ExternalUrlsModel externalUrls;
-  final String href;
-  final String id;
-  final List<ImageModel> images;
-  final String name;
-  final String releaseDate;
-  final String releaseDatePrecision;
-  final RestrictionsModel? restrictions;
-  final String type;
-  final String uri;
-  final List<SimplifiedArtistModel> artists;
-
+class AlbumModel extends AlbumEntity {
   const AlbumModel({
-    required this.albumType,
-    required this.totalTracks,
-    required this.availableMarkets,
-    required this.externalUrls,
-    required this.href,
-    required this.id,
-    required this.images,
-    required this.name,
-    required this.releaseDate,
-    required this.releaseDatePrecision,
-    required this.restrictions,
-    required this.type,
-    required this.uri,
-    required this.artists,
+    required super.albumType,
+    required super.totalTracks,
+    required super.availableMarkets,
+    required super.externalUrls,
+    required super.href,
+    required super.id,
+    required super.images,
+    required super.name,
+    required super.releaseDate,
+    required super.releaseDatePrecision,
+    required super.restrictions,
+    required super.type,
+    required super.uri,
+    required super.artists,
   });
 
   factory AlbumModel.fromJson(Map<String, dynamic> json) {

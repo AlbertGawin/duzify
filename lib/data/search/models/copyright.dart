@@ -1,10 +1,9 @@
-class CopyrightModel {
-  final String text;
-  final String type;
+import 'package:duzify/domain/search/entities/copyright.dart';
 
+class CopyrightModel extends CopyrightEntity {
   const CopyrightModel({
-    required this.text,
-    required this.type,
+    required super.text,
+    required super.type,
   });
 
   factory CopyrightModel.fromJson(Map<String, dynamic> json) {

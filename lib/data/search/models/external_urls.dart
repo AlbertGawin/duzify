@@ -1,8 +1,8 @@
-class ExternalUrlsModel {
-  final String spotify;
+import 'package:duzify/domain/search/entities/external_urls.dart';
 
+class ExternalUrlsModel extends ExternalUrlsEntity {
   const ExternalUrlsModel({
-    required this.spotify,
+    required super.spotify,
   });
 
   factory ExternalUrlsModel.fromJson(Map<String, dynamic> json) {

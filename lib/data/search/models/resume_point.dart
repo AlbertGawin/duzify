@@ -1,10 +1,9 @@
-class ResumePointModel {
-  final bool fullyPlayed;
-  final int resumePositionMs;
+import 'package:duzify/domain/search/entities/resume_point.dart';
 
+class ResumePointModel extends ResumePointEntity {
   const ResumePointModel({
-    required this.fullyPlayed,
-    required this.resumePositionMs,
+    required super.fullyPlayed,
+    required super.resumePositionMs,
   });
 
   factory ResumePointModel.fromJson(Map<String, dynamic> json) {

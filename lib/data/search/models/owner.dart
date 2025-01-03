@@ -1,23 +1,16 @@
 import 'package:duzify/data/search/models/external_urls.dart';
 import 'package:duzify/data/search/models/followers.dart';
+import 'package:duzify/domain/search/entities/owner.dart';
 
-class OwnerModel {
-  final ExternalUrlsModel externalUrls;
-  final FollowersModel? followers;
-  final String href;
-  final String id;
-  final String type;
-  final String uri;
-  final String? displayName;
-
+class OwnerModel extends OwnerEntity {
   const OwnerModel({
-    required this.externalUrls,
-    required this.followers,
-    required this.href,
-    required this.id,
-    required this.type,
-    required this.uri,
-    this.displayName,
+    required super.externalUrls,
+    required super.followers,
+    required super.href,
+    required super.id,
+    required super.type,
+    required super.uri,
+    super.displayName,
   });
 
   factory OwnerModel.fromJson(Map<String, dynamic> json) {

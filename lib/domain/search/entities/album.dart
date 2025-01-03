@@ -14,7 +14,7 @@ class AlbumEntity {
   final String name;
   final String releaseDate;
   final String releaseDatePrecision;
-  final RestrictionsEntity restrictions;
+  final RestrictionsEntity? restrictions;
   final String type;
   final String uri;
   final List<SimplifiedArtistEntity> artists;
