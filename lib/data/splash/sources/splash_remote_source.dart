@@ -1,5 +1,7 @@
 import 'dart:convert';
 import 'package:dartz/dartz.dart';
+import 'package:duzify/common/helpers/auth_manager.dart';
+import 'package:duzify/core/configs/constants/app_urls.dart';
 import 'package:http/http.dart' as http;
 
 abstract class SplashRemoteSource {
@@ -10,7 +12,7 @@ class SplashRemoteSourceImpl implements SplashRemoteSource {
   @override
   Future<Either> get accessToken async {
     try {
-      var url = Uri.https("accounts.spotify.com", "api/token", {
+      var url = Uri.https(AppURLs.basicAccounts, AppURLs.apiToken, {
         "grant_type": "client_credentials",
         "client_id": "fd1ae7830c7341f4b74fcf945938997a",
         "client_secret": "07523d99889041389eeedde351acac49",
@@ -23,6 +25,8 @@ class SplashRemoteSourceImpl implements SplashRemoteSource {
       if (response.statusCode == 200) {
         var jsonResponse = json.decode(response.body);
         var accessToken = jsonResponse['access_token'];
+
+        AuthManager().accessToken = accessToken;
 
         return Right(accessToken);
       } else {
