@@ -1,15 +1,15 @@
 import 'package:duzify/data/search/models/album.dart';
 
-class Albums {
+class AlbumsModel {
   final String href;
   final int limit;
   final String? next;
   final int offset;
   final String? previous;
   final int total;
-  final List<Album> items;
+  final List<AlbumModel> items;
 
-  const Albums({
+  const AlbumsModel({
     required this.href,
     required this.limit,
     required this.next,
@@ -19,15 +19,16 @@ class Albums {
     required this.items,
   });
 
-  factory Albums.fromJson(Map<String, dynamic> json) {
-    return Albums(
+  factory AlbumsModel.fromJson(Map<String, dynamic> json) {
+    return AlbumsModel(
       href: json['href'],
       limit: json['limit'],
       next: json['next'],
       offset: json['offset'],
       previous: json['previous'],
       total: json['total'],
-      items: List<Album>.from(json['items'].map((x) => Album.fromJson(x))),
+      items: List<AlbumModel>.from(
+          json['items'].map((x) => AlbumModel.fromJson(x))),
     );
   }
 }

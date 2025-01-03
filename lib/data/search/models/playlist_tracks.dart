@@ -1,14 +1,14 @@
-class PlaylistTracks {
+class PlaylistTracksModel {
   final String href;
   final int total;
 
-  const PlaylistTracks({
+  const PlaylistTracksModel({
     required this.href,
     required this.total,
   });
 
-  factory PlaylistTracks.fromJson(Map<String, dynamic> json) {
-    return PlaylistTracks(
+  factory PlaylistTracksModel.fromJson(Map<String, dynamic> json) {
+    return PlaylistTracksModel(
       href: json['href'],
       total: json['total'],
     );

@@ -1,12 +1,12 @@
-class ExternalUrls {
+class ExternalUrlsModel {
   final String spotify;
 
-  const ExternalUrls({
+  const ExternalUrlsModel({
     required this.spotify,
   });
 
-  factory ExternalUrls.fromJson(Map<String, dynamic> json) {
-    return ExternalUrls(
+  factory ExternalUrlsModel.fromJson(Map<String, dynamic> json) {
+    return ExternalUrlsModel(
       spotify: json['spotify'],
     );
   }

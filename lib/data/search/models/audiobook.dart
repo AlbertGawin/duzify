@@ -1,31 +1,31 @@
 import 'package:duzify/data/search/models/author.dart';
 import 'package:duzify/data/search/models/copyright.dart';
 import 'package:duzify/data/search/models/external_urls.dart';
-import 'package:duzify/data/search/models/image_object.dart';
+import 'package:duzify/data/search/models/image.dart';
 import 'package:duzify/data/search/models/narrator.dart';
 
-class Audiobook {
-  final List<Author> authors;
+class AudiobookModel {
+  final List<AuthorModel> authors;
   final List<String> availableMarkets;
-  final List<Copyright> copyrights;
+  final List<CopyrightModel> copyrights;
   final String description;
   final String htmlDescription;
   final String edition;
   final bool explicit;
-  final ExternalUrls externalUrls;
+  final ExternalUrlsModel externalUrls;
   final String href;
   final String id;
-  final List<ImageObject> images;
+  final List<ImageModel> images;
   final List<String> languages;
   final String mediaType;
   final String name;
-  final Narrator narrator;
+  final NarratorModel narrator;
   final String publisher;
   final String type;
   final String uri;
   final int totalChapters;
 
-  const Audiobook({
+  const AudiobookModel({
     required this.authors,
     required this.availableMarkets,
     required this.copyrights,
@@ -47,29 +47,29 @@ class Audiobook {
     required this.totalChapters,
   });
 
-  factory Audiobook.fromJson(Map<String, dynamic> json) {
-    return Audiobook(
-      authors: List<Author>.from(
-        json['authors'].map((x) => Author.fromJson(x)),
+  factory AudiobookModel.fromJson(Map<String, dynamic> json) {
+    return AudiobookModel(
+      authors: List<AuthorModel>.from(
+        json['authors'].map((x) => AuthorModel.fromJson(x)),
       ),
       availableMarkets: List<String>.from(json['available_markets']),
-      copyrights: List<Copyright>.from(
-        json['copyrights'].map((x) => Copyright.fromJson(x)),
+      copyrights: List<CopyrightModel>.from(
+        json['copyrights'].map((x) => CopyrightModel.fromJson(x)),
       ),
       description: json['description'],
       htmlDescription: json['html_description'],
       edition: json['edition'],
       explicit: json['explicit'],
-      externalUrls: ExternalUrls.fromJson(json['external_urls']),
+      externalUrls: ExternalUrlsModel.fromJson(json['external_urls']),
       href: json['href'],
       id: json['id'],
-      images: List<ImageObject>.from(
-        json['images'].map((x) => ImageObject.fromJson(x)),
+      images: List<ImageModel>.from(
+        json['images'].map((x) => ImageModel.fromJson(x)),
       ),
       languages: List<String>.from(json['languages']),
       mediaType: json['media_type'],
       name: json['name'],
-      narrator: Narrator.fromJson(json['narrator']),
+      narrator: NarratorModel.fromJson(json['narrator']),
       publisher: json['publisher'],
       type: json['type'],
       uri: json['uri'],

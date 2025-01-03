@@ -1,15 +1,15 @@
-import 'package:duzify/data/search/models/track_object.dart';
+import 'package:duzify/data/search/models/track.dart';
 
-class Tracks {
+class TracksModel {
   final String href;
   final int limit;
   final String? next;
   final int offset;
   final String? previous;
   final int total;
-  final List<TrackObject> items;
+  final List<TrackModel> items;
 
-  const Tracks({
+  const TracksModel({
     required this.href,
     required this.limit,
     required this.next,
@@ -19,16 +19,16 @@ class Tracks {
     required this.items,
   });
 
-  factory Tracks.fromJson(Map<String, dynamic> json) {
-    return Tracks(
+  factory TracksModel.fromJson(Map<String, dynamic> json) {
+    return TracksModel(
       href: json['href'],
       limit: json['limit'],
       next: json['next'],
       offset: json['offset'],
       previous: json['previous'],
       total: json['total'],
-      items: List<TrackObject>.from(
-          json['items'].map((x) => TrackObject.fromJson(x))),
+      items: List<TrackModel>.from(
+          json['items'].map((x) => TrackModel.fromJson(x))),
     );
   }
 }

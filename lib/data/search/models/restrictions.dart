@@ -1,12 +1,12 @@
-class Restrictions {
+class RestrictionsModel {
   final String reason;
 
-  const Restrictions({
+  const RestrictionsModel({
     required this.reason,
   });
 
-  factory Restrictions.fromJson(Map<String, dynamic> json) {
-    return Restrictions(
+  factory RestrictionsModel.fromJson(Map<String, dynamic> json) {
+    return RestrictionsModel(
       reason: json['reason'],
     );
   }

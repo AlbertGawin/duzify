@@ -1,12 +1,12 @@
-class Author {
+class AuthorModel {
   final String name;
 
-  const Author({
+  const AuthorModel({
     required this.name,
   });
 
-  factory Author.fromJson(Map<String, dynamic> json) {
-    return Author(
+  factory AuthorModel.fromJson(Map<String, dynamic> json) {
+    return AuthorModel(
       name: json['name'],
     );
   }

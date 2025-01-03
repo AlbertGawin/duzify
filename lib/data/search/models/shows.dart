@@ -1,15 +1,15 @@
 import 'package:duzify/data/search/models/show.dart';
 
-class Shows {
+class ShowsModel {
   final String href;
   final int limit;
   final String? next;
   final int offset;
   final String? previous;
   final int total;
-  final List<Show> items;
+  final List<ShowModel> items;
 
-  const Shows({
+  const ShowsModel({
     required this.href,
     required this.limit,
     required this.next,
@@ -19,15 +19,16 @@ class Shows {
     required this.items,
   });
 
-  factory Shows.fromJson(Map<String, dynamic> json) {
-    return Shows(
+  factory ShowsModel.fromJson(Map<String, dynamic> json) {
+    return ShowsModel(
       href: json['href'],
       limit: json['limit'],
       next: json['next'],
       offset: json['offset'],
       previous: json['previous'],
       total: json['total'],
-      items: List<Show>.from(json['items'].map((x) => Show.fromJson(x))),
+      items:
+          List<ShowModel>.from(json['items'].map((x) => ShowModel.fromJson(x))),
     );
   }
 }

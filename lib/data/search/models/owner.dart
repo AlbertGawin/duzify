@@ -1,16 +1,16 @@
 import 'package:duzify/data/search/models/external_urls.dart';
 import 'package:duzify/data/search/models/followers.dart';
 
-class Owner {
-  final ExternalUrls externalUrls;
-  final Followers followers;
+class OwnerModel {
+  final ExternalUrlsModel externalUrls;
+  final FollowersModel followers;
   final String href;
   final String id;
   final String type;
   final String uri;
   final String? displayName;
 
-  const Owner({
+  const OwnerModel({
     required this.externalUrls,
     required this.followers,
     required this.href,
@@ -20,10 +20,10 @@ class Owner {
     this.displayName,
   });
 
-  factory Owner.fromJson(Map<String, dynamic> json) {
-    return Owner(
-      externalUrls: ExternalUrls.fromJson(json['external_urls']),
-      followers: Followers.fromJson(json['followers']),
+  factory OwnerModel.fromJson(Map<String, dynamic> json) {
+    return OwnerModel(
+      externalUrls: ExternalUrlsModel.fromJson(json['external_urls']),
+      followers: FollowersModel.fromJson(json['followers']),
       href: json['href'],
       id: json['id'],
       type: json['type'],

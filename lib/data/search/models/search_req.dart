@@ -6,7 +6,7 @@ class SearchReq {
   final int? offset;
   final String? includeExternal;
 
-  SearchReq({
+  const SearchReq({
     required this.q,
     this.type = const [
       "album",

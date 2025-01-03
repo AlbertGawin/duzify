@@ -1,17 +1,17 @@
 import 'package:duzify/data/search/models/copyright.dart';
 import 'package:duzify/data/search/models/external_urls.dart';
-import 'package:duzify/data/search/models/image_object.dart';
+import 'package:duzify/data/search/models/image.dart';
 
-class Show {
+class ShowModel {
   final List<String> availableMarkets;
-  final List<Copyright> copyrights;
+  final List<CopyrightModel> copyrights;
   final String description;
   final String htmlDescription;
   final bool explicit;
-  final ExternalUrls externalUrls;
+  final ExternalUrlsModel externalUrls;
   final String href;
   final String id;
-  final List<ImageObject> images;
+  final List<ImageModel> images;
   final bool isExternallyHosted;
   final List<String> languages;
   final String mediaType;
@@ -21,7 +21,7 @@ class Show {
   final String uri;
   final int totalEpisodes;
 
-  const Show({
+  const ShowModel({
     required this.availableMarkets,
     required this.copyrights,
     required this.description,
@@ -41,20 +41,20 @@ class Show {
     required this.totalEpisodes,
   });
 
-  factory Show.fromJson(Map<String, dynamic> json) {
-    return Show(
+  factory ShowModel.fromJson(Map<String, dynamic> json) {
+    return ShowModel(
       availableMarkets: List<String>.from(json['available_markets']),
-      copyrights: List<Copyright>.from(
-        json['copyrights'].map((x) => Copyright.fromJson(x)),
+      copyrights: List<CopyrightModel>.from(
+        json['copyrights'].map((x) => CopyrightModel.fromJson(x)),
       ),
       description: json['description'],
       htmlDescription: json['html_description'],
       explicit: json['explicit'],
-      externalUrls: ExternalUrls.fromJson(json['external_urls']),
+      externalUrls: ExternalUrlsModel.fromJson(json['external_urls']),
       href: json['href'],
       id: json['id'],
-      images: List<ImageObject>.from(
-        json['images'].map((x) => ImageObject.fromJson(x)),
+      images: List<ImageModel>.from(
+        json['images'].map((x) => ImageModel.fromJson(x)),
       ),
       isExternallyHosted: json['is_externally_hosted'],
       languages: List<String>.from(json['languages']),

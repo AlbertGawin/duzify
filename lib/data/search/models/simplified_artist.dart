@@ -1,14 +1,14 @@
 import 'package:duzify/data/search/models/external_urls.dart';
 
-class SimplifiedArtistObject {
-  final ExternalUrls externalUrls;
+class SimplifiedArtistModel {
+  final ExternalUrlsModel externalUrls;
   final String href;
   final String id;
   final String name;
   final String type;
   final String uri;
 
-  const SimplifiedArtistObject({
+  const SimplifiedArtistModel({
     required this.externalUrls,
     required this.href,
     required this.id,
@@ -17,9 +17,9 @@ class SimplifiedArtistObject {
     required this.uri,
   });
 
-  factory SimplifiedArtistObject.fromJson(Map<String, dynamic> json) {
-    return SimplifiedArtistObject(
-      externalUrls: ExternalUrls.fromJson(json['external_urls']),
+  factory SimplifiedArtistModel.fromJson(Map<String, dynamic> json) {
+    return SimplifiedArtistModel(
+      externalUrls: ExternalUrlsModel.fromJson(json['external_urls']),
       href: json['href'],
       id: json['id'],
       name: json['name'],

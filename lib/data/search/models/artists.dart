@@ -1,15 +1,15 @@
-import 'package:duzify/data/search/models/artist_object.dart';
+import 'package:duzify/data/search/models/artist.dart';
 
-class Artists {
+class ArtistsModel {
   final String href;
   final int limit;
   final String? next;
   final int offset;
   final String? previous;
   final int total;
-  final List<ArtistObject> items;
+  final List<ArtistModel> items;
 
-  const Artists({
+  const ArtistsModel({
     required this.href,
     required this.limit,
     required this.next,
@@ -19,16 +19,16 @@ class Artists {
     required this.items,
   });
 
-  factory Artists.fromJson(Map<String, dynamic> json) {
-    return Artists(
+  factory ArtistsModel.fromJson(Map<String, dynamic> json) {
+    return ArtistsModel(
       href: json['href'],
       limit: json['limit'],
       next: json['next'],
       offset: json['offset'],
       previous: json['previous'],
       total: json['total'],
-      items: List<ArtistObject>.from(
-          json['items'].map((x) => ArtistObject.fromJson(x))),
+      items: List<ArtistModel>.from(
+          json['items'].map((x) => ArtistModel.fromJson(x))),
     );
   }
 }

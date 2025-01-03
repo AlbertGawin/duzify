@@ -1,24 +1,24 @@
 import 'package:duzify/data/search/models/external_urls.dart';
-import 'package:duzify/data/search/models/image_object.dart';
+import 'package:duzify/data/search/models/image.dart';
 import 'package:duzify/data/search/models/owner.dart';
 import 'package:duzify/data/search/models/playlist_tracks.dart';
 
-class Playlist {
+class PlaylistModel {
   final bool collaborative;
   final String description;
-  final ExternalUrls externalUrls;
+  final ExternalUrlsModel externalUrls;
   final String href;
   final String id;
-  final List<ImageObject> images;
+  final List<ImageModel> images;
   final String name;
-  final Owner owner;
+  final OwnerModel owner;
   final bool public;
   final String snapshotId;
-  final PlaylistTracks tracks;
+  final PlaylistTracksModel tracks;
   final String type;
   final String uri;
 
-  const Playlist({
+  const PlaylistModel({
     required this.collaborative,
     required this.description,
     required this.externalUrls,
@@ -34,21 +34,21 @@ class Playlist {
     required this.uri,
   });
 
-  factory Playlist.fromJson(Map<String, dynamic> json) {
-    return Playlist(
+  factory PlaylistModel.fromJson(Map<String, dynamic> json) {
+    return PlaylistModel(
       collaborative: json['collaborative'],
       description: json['description'],
-      externalUrls: ExternalUrls.fromJson(json['external_urls']),
+      externalUrls: ExternalUrlsModel.fromJson(json['external_urls']),
       href: json['href'],
       id: json['id'],
-      images: List<ImageObject>.from(
-        json['images'].map((x) => ImageObject.fromJson(x)),
+      images: List<ImageModel>.from(
+        json['images'].map((x) => ImageModel.fromJson(x)),
       ),
       name: json['name'],
-      owner: Owner.fromJson(json['owner']),
+      owner: OwnerModel.fromJson(json['owner']),
       public: json['public'],
       snapshotId: json['snapshot_id'],
-      tracks: PlaylistTracks.fromJson(json['tracks']),
+      tracks: PlaylistTracksModel.fromJson(json['tracks']),
       type: json['type'],
       uri: json['uri'],
     );

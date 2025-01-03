@@ -1,16 +1,16 @@
-class ImageObject {
+class ImageModel {
   final String url;
   final int? height;
   final int? width;
 
-  const ImageObject({
+  const ImageModel({
     required this.url,
     required this.height,
     required this.width,
   });
 
-  factory ImageObject.fromJson(Map<String, dynamic> json) {
-    return ImageObject(
+  factory ImageModel.fromJson(Map<String, dynamic> json) {
+    return ImageModel(
       url: json['url'],
       height: json['height'],
       width: json['width'],

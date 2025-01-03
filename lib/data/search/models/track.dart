@@ -2,21 +2,21 @@ import 'package:duzify/data/search/models/album.dart';
 import 'package:duzify/data/search/models/external_ids.dart';
 import 'package:duzify/data/search/models/external_urls.dart';
 import 'package:duzify/data/search/models/restrictions.dart';
-import 'package:duzify/data/search/models/simplified_artist_object.dart';
+import 'package:duzify/data/search/models/simplified_artist.dart';
 
-class TrackObject {
-  final Album album;
-  final List<SimplifiedArtistObject> artists;
+class TrackModel {
+  final AlbumModel album;
+  final List<SimplifiedArtistModel> artists;
   final List<String> availableMarkets;
   final int discNumber;
   final int durationMs;
   final bool explicit;
-  final ExternalIds externalIds;
-  final ExternalUrls externalUrls;
+  final ExternalIdsModel externalIds;
+  final ExternalUrlsModel externalUrls;
   final String href;
   final String id;
   final bool isPlayable;
-  final Restrictions restrictions;
+  final RestrictionsModel restrictions;
   final String name;
   final int popularity;
   final int trackNumber;
@@ -24,7 +24,7 @@ class TrackObject {
   final String uri;
   final bool isLocal;
 
-  const TrackObject({
+  const TrackModel({
     required this.album,
     required this.artists,
     required this.availableMarkets,
@@ -45,21 +45,21 @@ class TrackObject {
     required this.isLocal,
   });
 
-  factory TrackObject.fromJson(Map<String, dynamic> json) {
-    return TrackObject(
-      album: Album.fromJson(json['album']),
-      artists: List<SimplifiedArtistObject>.from(
-          json['artists'].map((x) => SimplifiedArtistObject.fromJson(x))),
+  factory TrackModel.fromJson(Map<String, dynamic> json) {
+    return TrackModel(
+      album: AlbumModel.fromJson(json['album']),
+      artists: List<SimplifiedArtistModel>.from(
+          json['artists'].map((x) => SimplifiedArtistModel.fromJson(x))),
       availableMarkets: List<String>.from(json['available_markets']),
       discNumber: json['disc_number'],
       durationMs: json['duration_ms'],
       explicit: json['explicit'],
-      externalIds: ExternalIds.fromJson(json['external_ids']),
-      externalUrls: ExternalUrls.fromJson(json['external_urls']),
+      externalIds: ExternalIdsModel.fromJson(json['external_ids']),
+      externalUrls: ExternalUrlsModel.fromJson(json['external_urls']),
       href: json['href'],
       id: json['id'],
       isPlayable: json['is_playable'],
-      restrictions: Restrictions.fromJson(json['restrictions']),
+      restrictions: RestrictionsModel.fromJson(json['restrictions']),
       name: json['name'],
       popularity: json['popularity'],
       trackNumber: json['track_number'],

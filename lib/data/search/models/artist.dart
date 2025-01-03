@@ -1,20 +1,20 @@
 import 'package:duzify/data/search/models/external_urls.dart';
 import 'package:duzify/data/search/models/followers.dart';
-import 'package:duzify/data/search/models/image_object.dart';
+import 'package:duzify/data/search/models/image.dart';
 
-class ArtistObject {
-  final ExternalUrls externalUrls;
-  final Followers followers;
+class ArtistModel {
+  final ExternalUrlsModel externalUrls;
+  final FollowersModel followers;
   final List<String> genres;
   final String href;
   final String id;
-  final List<ImageObject> images;
+  final List<ImageModel> images;
   final String name;
   final int popularity;
   final String type;
   final String uri;
 
-  const ArtistObject({
+  const ArtistModel({
     required this.externalUrls,
     required this.followers,
     required this.genres,
@@ -27,15 +27,15 @@ class ArtistObject {
     required this.uri,
   });
 
-  factory ArtistObject.fromJson(Map<String, dynamic> json) {
-    return ArtistObject(
-      externalUrls: ExternalUrls.fromJson(json['external_urls']),
-      followers: Followers.fromJson(json['followers']),
+  factory ArtistModel.fromJson(Map<String, dynamic> json) {
+    return ArtistModel(
+      externalUrls: ExternalUrlsModel.fromJson(json['external_urls']),
+      followers: FollowersModel.fromJson(json['followers']),
       genres: List<String>.from(json['genres']),
       href: json['href'],
       id: json['id'],
-      images: List<ImageObject>.from(
-          json['images'].map((x) => ImageObject.fromJson(x))),
+      images: List<ImageModel>.from(
+          json['images'].map((x) => ImageModel.fromJson(x))),
       name: json['name'],
       popularity: json['popularity'],
       type: json['type'],

@@ -1,14 +1,14 @@
-class Followers {
+class FollowersModel {
   final String? href;
   final int total;
 
-  const Followers({
+  const FollowersModel({
     required this.href,
     required this.total,
   });
 
-  factory Followers.fromJson(Map<String, dynamic> json) {
-    return Followers(
+  factory FollowersModel.fromJson(Map<String, dynamic> json) {
+    return FollowersModel(
       href: json['href'],
       total: json['total'],
     );
