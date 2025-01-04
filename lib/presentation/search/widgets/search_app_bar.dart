@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'package:duzify/core/configs/theme/app_colors.dart';
 import 'package:duzify/data/search/models/search_req.dart';
 import 'package:duzify/presentation/search/bloc/cubit/search_cubit.dart';
@@ -21,7 +20,6 @@ class _SearchAppBarState extends State<SearchAppBar>
   final TextEditingController _controller = TextEditingController();
   final FocusNode _focusNode = FocusNode();
   bool _wasKeyboardVisible = false;
-  Timer? _debounce;
 
   @override
   Widget build(BuildContext context) {
@@ -35,11 +33,13 @@ class _SearchAppBarState extends State<SearchAppBar>
           hintText: 'Czego chcesz posłuchać?',
           hintStyle: TextStyle(color: AppColors.lightGray),
           border: InputBorder.none,
+          contentPadding: EdgeInsets.symmetric(vertical: 15),
           suffixIcon: _controller.text.isNotEmpty
               ? IconButton(
                   icon: Icon(Icons.clear, color: AppColors.lightGray),
                   onPressed: () {
                     _controller.clear();
+                    context.read<SearchCubit>().search(SearchReq(q: ''));
                     setState(() {});
                   },
                 )
@@ -47,15 +47,13 @@ class _SearchAppBarState extends State<SearchAppBar>
         ),
         style: TextStyle(color: AppColors.white),
         onChanged: (text) {
-          if (_debounce?.isActive ?? false) _debounce?.cancel();
-          _debounce = Timer(const Duration(seconds: 1), () {
-            context.read<SearchCubit>().search(SearchReq(q: text));
-          });
+          context.read<SearchCubit>().search(SearchReq(q: text));
           setState(() {});
         },
         onSubmitted: (text) {
           if (text.isNotEmpty) {
             context.read<SearchCubit>().search(SearchReq(q: text));
+            setState(() {});
           }
         },
       ),
