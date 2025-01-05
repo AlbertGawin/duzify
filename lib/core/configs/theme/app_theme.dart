@@ -9,17 +9,6 @@ class AppTheme {
     scaffoldBackgroundColor: AppColors.white,
     brightness: Brightness.light,
     fontFamily: 'HelveticaNeue',
-    elevatedButtonTheme: ElevatedButtonThemeData(
-      style: ElevatedButton.styleFrom(
-        backgroundColor: AppColors.green,
-        textStyle: const TextStyle(
-          fontSize: 20,
-          fontWeight: FontWeight.bold,
-          color: AppColors.white,
-        ),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-      ),
-    ),
   );
 
   static final darkTheme = ThemeData(
@@ -29,16 +18,5 @@ class AppTheme {
     brightness: Brightness.dark,
     textTheme: GoogleFonts.lexendTextTheme(),
     fontFamily: 'HelveticaNeue',
-    elevatedButtonTheme: ElevatedButtonThemeData(
-      style: ElevatedButton.styleFrom(
-        backgroundColor: AppColors.green,
-        textStyle: const TextStyle(
-          fontSize: 20,
-          fontWeight: FontWeight.bold,
-          color: AppColors.white,
-        ),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-      ),
-    ),
   );
 }

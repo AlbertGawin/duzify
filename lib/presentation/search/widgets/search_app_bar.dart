@@ -40,6 +40,7 @@ class _SearchAppBarState extends State<SearchAppBar>
                   onPressed: () {
                     _controller.clear();
                     context.read<SearchCubit>().search(SearchReq(q: ''));
+                    _focusNode.requestFocus();
                     setState(() {});
                   },
                 )
@@ -49,12 +50,6 @@ class _SearchAppBarState extends State<SearchAppBar>
         onChanged: (text) {
           context.read<SearchCubit>().search(SearchReq(q: text));
           setState(() {});
-        },
-        onSubmitted: (text) {
-          if (text.isNotEmpty) {
-            context.read<SearchCubit>().search(SearchReq(q: text));
-            setState(() {});
-          }
         },
       ),
     );
