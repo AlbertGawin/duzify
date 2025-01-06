@@ -36,7 +36,7 @@ class SearchReq extends SearchReqEntity {
     };
 
     if (market != null) data['market'] = market;
-    if (limit != null) data['limit'] = limit;
+    if (limit != null) data['limit'] = limit.toString();
     if (offset != null) data['offset'] = offset;
     if (includeExternal != null) data['include_external'] = includeExternal;
 

@@ -48,7 +48,7 @@ class _SearchAppBarState extends State<SearchAppBar>
         ),
         style: TextStyle(color: AppColors.white),
         onChanged: (text) {
-          context.read<SearchCubit>().search(SearchReq(q: text));
+          context.read<SearchCubit>().search(SearchReq(q: text, limit: 16));
           setState(() {});
         },
       ),

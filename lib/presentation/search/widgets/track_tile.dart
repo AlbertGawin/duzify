@@ -4,20 +4,45 @@ import 'package:flutter/material.dart';
 
 class TrackTile extends StatelessWidget {
   final TrackEntity track;
+  final Image preloadedImage;
 
-  const TrackTile({super.key, required this.track});
+  const TrackTile({
+    super.key,
+    required this.track,
+    required this.preloadedImage,
+  });
 
   @override
   Widget build(BuildContext context) {
+    // final image = Image.network(track.album.images.first.url);
+    // precacheImage(image.image, context);
+
     return ListTile(
+      onTap: () async {
+        // showModalBottomSheet(
+        //   isScrollControlled: true,
+        //   context: context,
+        //   builder: (BuildContext context) {
+        //     return TrackPlayerPage(track: track);
+        //   },
+        // );
+
+        // Navigator.of(context).push(
+        //   MaterialPageRoute(
+        //     builder: (context) => TrackPlayerPage(
+        //       track: track,
+        //       preloadedImage: image,
+        //     ),
+        //   ),
+        // );
+      },
       contentPadding: const EdgeInsets.only(left: 16, right: 0),
-      leading: ClipRRect(
-        borderRadius: BorderRadius.circular(4),
-        child: Image.network(
-          track.album.images.last.url,
-          width: 48,
-          height: 48,
-          fit: BoxFit.cover,
+      leading: SizedBox(
+        width: 48,
+        height: 48,
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(4),
+          child: preloadedImage,
         ),
       ),
       title: Text(

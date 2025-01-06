@@ -22,6 +22,7 @@ dependencies:
   get_it: 
   flutter_bloc: 
   async: ^2.11.0
+  marquee: ^2.3.0
   
 dev_dependencies:
   flutter_test:

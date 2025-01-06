@@ -28,10 +28,10 @@ class SearchCubit extends Cubit<SearchState> {
     try {
       var search = await _searchOperation!.value;
 
-      search.fold(
-        (failure) => emit(SearchFailure(message: failure.message)),
-        (result) => emit(SearchSuccess(result: result)),
-      );
+      search.fold((failure) => emit(SearchFailure(message: failure.message)),
+          (result) {
+        emit(SearchSuccess(result: result));
+      });
     } catch (e) {
       emit(SearchFailure(message: e.toString()));
     }
