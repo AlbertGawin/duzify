@@ -20,13 +20,23 @@ class SearchModel extends SearchEntity {
 
   factory SearchModel.fromJson(Map<String, dynamic> json) {
     return SearchModel(
-      tracks: TracksModel.fromJson(json['tracks']),
-      artists: ArtistsModel.fromJson(json['artists']),
-      albums: AlbumsModel.fromJson(json['albums']),
-      playlists: PlaylistsModel.fromJson(json['playlists']),
-      shows: ShowsModel.fromJson(json['shows']),
-      episodes: EpisodesModel.fromJson(json['episodes']),
-      audiobooks: AudiobooksModel.fromJson(json['audiobooks']),
+      tracks:
+          json['tracks'] != null ? TracksModel.fromJson(json['tracks']) : null,
+      artists: json['artists'] != null
+          ? ArtistsModel.fromJson(json['artists'])
+          : null,
+      albums:
+          json['albums'] != null ? AlbumsModel.fromJson(json['albums']) : null,
+      playlists: json['playlists'] != null
+          ? PlaylistsModel.fromJson(json['playlists'])
+          : null,
+      shows: json['shows'] != null ? ShowsModel.fromJson(json['shows']) : null,
+      episodes: json['episodes'] != null
+          ? EpisodesModel.fromJson(json['episodes'])
+          : null,
+      audiobooks: json['audiobooks'] != null
+          ? AudiobooksModel.fromJson(json['audiobooks'])
+          : null,
     );
   }
 }

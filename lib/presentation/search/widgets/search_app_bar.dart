@@ -39,7 +39,9 @@ class _SearchAppBarState extends State<SearchAppBar>
                   icon: Icon(Icons.clear, color: AppColors.lightGray),
                   onPressed: () {
                     _controller.clear();
-                    context.read<SearchCubit>().search(SearchReq(q: ''));
+                    context
+                        .read<SearchCubit>()
+                        .search(SearchReq(q: '', type: ['track']));
                     _focusNode.requestFocus();
                     setState(() {});
                   },
@@ -48,7 +50,9 @@ class _SearchAppBarState extends State<SearchAppBar>
         ),
         style: TextStyle(color: AppColors.white),
         onChanged: (text) {
-          context.read<SearchCubit>().search(SearchReq(q: text, limit: 16));
+          context
+              .read<SearchCubit>()
+              .search(SearchReq(q: text, type: ['track'], limit: 16));
           setState(() {});
         },
       ),

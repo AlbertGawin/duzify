@@ -7,13 +7,13 @@ import 'package:duzify/domain/search/entities/shows.dart';
 import 'package:duzify/domain/search/entities/tracks.dart';
 
 class SearchEntity {
-  final TracksEntity tracks;
-  final ArtistsEntity artists;
-  final AlbumsEntity albums;
-  final PlaylistsEntity playlists;
-  final ShowsEntity shows;
-  final EpisodesEntity episodes;
-  final AudiobooksEntity audiobooks;
+  final TracksEntity? tracks;
+  final ArtistsEntity? artists;
+  final AlbumsEntity? albums;
+  final PlaylistsEntity? playlists;
+  final ShowsEntity? shows;
+  final EpisodesEntity? episodes;
+  final AudiobooksEntity? audiobooks;
 
   const SearchEntity({
     required this.tracks,

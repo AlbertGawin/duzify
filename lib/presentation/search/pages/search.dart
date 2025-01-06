@@ -1,3 +1,4 @@
+import 'package:duzify/common/widgets/error/error_message.dart';
 import 'package:duzify/domain/search/entities/search.dart';
 import 'package:duzify/presentation/Search/bloc/cubit/Search_state.dart';
 import 'package:duzify/presentation/search/bloc/cubit/search_cubit.dart';
@@ -26,17 +27,16 @@ class SearchPage extends StatelessWidget {
               return Column(
                 children: [
                   SizedBox(height: 50, child: CategoryList()),
-                  Expanded(child: TracksList(tracks: result.tracks)),
+                  if (result.tracks != null)
+                    Expanded(child: TracksList(tracks: result.tracks!)),
                 ],
               );
             } else if (state is SearchLoading) {
               return const Center(
                 child: CircularProgressIndicator(),
               );
-            } else if (state is SearchFailure) {
-              return Center(
-                child: Text(state.message),
-              );
+            } else if (state is SearchError) {
+              return ErrorMessage(title: "Search Failure", text: state.message);
             } else {
               return const IntroText();
             }

@@ -45,13 +45,9 @@ class TrackPlayerPage extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 64),
-            Container(
-              color: Colors.red,
-              width: double.infinity,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(8),
-                child: preloadedImage,
-              ),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(8),
+              child: preloadedImage,
             ),
             const SizedBox(height: 64),
             Row(

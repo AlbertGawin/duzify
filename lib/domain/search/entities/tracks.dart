@@ -1,4 +1,4 @@
-import 'package:duzify/domain/search/entities/track.dart';
+import 'package:duzify/data/search/models/track.dart';
 
 class TracksEntity {
   final String href;
@@ -7,7 +7,7 @@ class TracksEntity {
   final int offset;
   final String? previous;
   final int total;
-  final List<TrackEntity> items;
+  final List<TrackModel> items;
 
   const TracksEntity({
     required this.href,

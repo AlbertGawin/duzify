@@ -12,8 +12,8 @@ final class SearchSuccess extends SearchState {
   SearchSuccess({required this.result});
 }
 
-final class SearchFailure extends SearchState {
+final class SearchError extends SearchState {
   final String message;
 
-  SearchFailure({required this.message});
+  SearchError({required this.message});
 }

@@ -21,7 +21,7 @@ class _TracksListState extends State<TracksList> {
       itemCount: widget.tracks.items.length,
       itemBuilder: (context, index) {
         final track = widget.tracks.items[index];
-        return TrackTile(track: track, preloadedImage: images[index]);
+        return TrackTile(track: track, thumbnail: images[index]);
       },
     );
   }

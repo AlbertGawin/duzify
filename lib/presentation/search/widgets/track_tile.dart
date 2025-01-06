@@ -1,52 +1,65 @@
 import 'package:duzify/core/configs/theme/app_colors.dart';
 import 'package:duzify/domain/search/entities/track.dart';
+import 'package:duzify/presentation/track_player/pages/track_player.dart';
 import 'package:flutter/material.dart';
 
-class TrackTile extends StatelessWidget {
+class TrackTile extends StatefulWidget {
   final TrackEntity track;
-  final Image preloadedImage;
+  final Image thumbnail;
 
   const TrackTile({
     super.key,
     required this.track,
-    required this.preloadedImage,
+    required this.thumbnail,
   });
 
   @override
+  State<TrackTile> createState() => _TrackTileState();
+}
+
+class _TrackTileState extends State<TrackTile> {
+  bool _isLoading = false;
+
+  Future<void> _handleTap() async {
+    setState(() {
+      _isLoading = true;
+    });
+
+    final image = Image.network(widget.track.album.images.first.url);
+    await precacheImage(image.image, context);
+
+    if (mounted) {
+      setState(() {
+        _isLoading = false;
+      });
+
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (context) => TrackPlayerPage(
+            track: widget.track,
+            preloadedImage: image,
+          ),
+        ),
+      );
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
-    // final image = Image.network(track.album.images.first.url);
-    // precacheImage(image.image, context);
-
     return ListTile(
-      onTap: () async {
-        // showModalBottomSheet(
-        //   isScrollControlled: true,
-        //   context: context,
-        //   builder: (BuildContext context) {
-        //     return TrackPlayerPage(track: track);
-        //   },
-        // );
-
-        // Navigator.of(context).push(
-        //   MaterialPageRoute(
-        //     builder: (context) => TrackPlayerPage(
-        //       track: track,
-        //       preloadedImage: image,
-        //     ),
-        //   ),
-        // );
-      },
+      onTap: _isLoading ? null : _handleTap,
+      dense: true,
       contentPadding: const EdgeInsets.only(left: 16, right: 0),
       leading: SizedBox(
         width: 48,
         height: 48,
         child: ClipRRect(
           borderRadius: BorderRadius.circular(4),
-          child: preloadedImage,
+          child: widget.thumbnail,
         ),
       ),
       title: Text(
-        track.name,
+        widget.track.name,
         style: Theme.of(context).textTheme.bodyLarge?.copyWith(
               color: AppColors.white,
               letterSpacing: 0,
@@ -56,7 +69,7 @@ class TrackTile extends StatelessWidget {
         overflow: TextOverflow.ellipsis,
       ),
       subtitle: Text(
-        '${track.type == "track" ? "Utwór" : "Inne"} • ${track.artists.map((artist) => artist.name).join(', ')}',
+        '${widget.track.type == "track" ? "Utwór" : "Inne"} • ${widget.track.artists.map((artist) => artist.name).join(', ')}',
         style: TextStyle(
           color: AppColors.lightGray,
           fontSize: 12,
@@ -64,26 +77,13 @@ class TrackTile extends StatelessWidget {
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
       ),
-      trailing: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          IconButton(
-            icon: Icon(
-              Icons.more_vert,
-              color: AppColors.lightGray,
-              size: 24,
-            ),
-            onPressed: () {},
-          ),
-          IconButton(
-            icon: Icon(
-              Icons.add_circle_outline,
-              color: AppColors.lightGray,
-              size: 20,
-            ),
-            onPressed: () {},
-          ),
-        ],
+      trailing: IconButton(
+        icon: Icon(
+          Icons.more_vert,
+          color: AppColors.lightGray,
+          size: 24,
+        ),
+        onPressed: () {},
       ),
     );
   }

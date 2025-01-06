@@ -3,15 +3,7 @@ import 'package:duzify/domain/search/entities/search_req.dart';
 class SearchReq extends SearchReqEntity {
   const SearchReq({
     required super.q,
-    super.type = const [
-      "album",
-      "artist",
-      "playlist",
-      "track",
-      "show",
-      "episode",
-      "audiobook"
-    ],
+    required super.type,
     super.market,
     super.limit,
     super.offset,
@@ -30,11 +22,9 @@ class SearchReq extends SearchReqEntity {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = {
-      'q': q,
-      'type': type.join(','),
-    };
+    final Map<String, dynamic> data = {'q': q};
 
+    if (type != null) data['type'] = type;
     if (market != null) data['market'] = market;
     if (limit != null) data['limit'] = limit.toString();
     if (offset != null) data['offset'] = offset;
