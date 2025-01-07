@@ -1,16 +1,57 @@
+import 'dart:async';
+import 'dart:ui';
+
 import 'package:duzify/core/configs/theme/app_colors.dart';
 import 'package:duzify/domain/search/entities/track.dart';
 import 'package:flutter/material.dart';
 
-class TrackPlayerPage extends StatelessWidget {
+class TrackPlayerPage extends StatefulWidget {
   final TrackEntity track;
-  final Image preloadedImage;
+  final Image thumbnail;
 
   const TrackPlayerPage({
     super.key,
     required this.track,
-    required this.preloadedImage,
+    required this.thumbnail,
   });
+
+  @override
+  State<TrackPlayerPage> createState() => _TrackPlayerPageState();
+}
+
+class _TrackPlayerPageState extends State<TrackPlayerPage> {
+  late Future<Image> _imageFuture;
+  bool _isImageCached = false;
+
+  @override
+  void didChangeDependencies() {
+    _imageFuture = _loadAndCacheImage();
+    super.didChangeDependencies();
+  }
+
+  Future<Image> _loadAndCacheImage() async {
+    final image = Image.network(widget.track.album.images.first.url);
+    final completer = Completer<void>();
+    final stream = image.image.resolve(ImageConfiguration.empty);
+    stream.addListener(
+      ImageStreamListener(
+        (info, _) {
+          setState(() {
+            _isImageCached = true;
+          });
+          completer.complete();
+        },
+        onError: (error, stackTrace) {
+          completer.complete();
+        },
+      ),
+    );
+    await completer.future;
+    if (mounted) {
+      await precacheImage(image.image, context);
+    }
+    return image;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,9 +86,37 @@ class TrackPlayerPage extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 64),
-            ClipRRect(
-              borderRadius: BorderRadius.circular(8),
-              child: preloadedImage,
+            FutureBuilder<Image>(
+              future: _imageFuture,
+              builder: (context, snapshot) {
+                return AnimatedSwitcher(
+                  switchInCurve: Curves.easeOutQuad,
+                  duration: const Duration(seconds: 1),
+                  child: _isImageCached && snapshot.hasData
+                      ? ClipRRect(
+                          key: ValueKey<int>(1),
+                          borderRadius: BorderRadius.circular(8),
+                          child: Image(
+                            width: double.infinity,
+                            image: snapshot.data!.image,
+                            fit: BoxFit.cover,
+                          ),
+                        )
+                      : ClipRRect(
+                          key: ValueKey<int>(2),
+                          borderRadius: BorderRadius.circular(8),
+                          child: ImageFiltered(
+                            imageFilter:
+                                ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                            child: Image(
+                              width: double.infinity,
+                              image: widget.thumbnail.image,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                );
+              },
             ),
             const SizedBox(height: 64),
             Row(
@@ -58,14 +127,16 @@ class TrackPlayerPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      track.name,
+                      widget.track.name,
                       style: TextStyle(
                         fontSize: 20,
                         color: AppColors.white,
                       ),
                     ),
                     Text(
-                      track.artists.map((artist) => artist.name).join(', '),
+                      widget.track.artists
+                          .map((artist) => artist.name)
+                          .join(', '),
                       textAlign: TextAlign.start,
                       style: TextStyle(
                         fontSize: 14,

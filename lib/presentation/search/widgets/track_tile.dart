@@ -18,36 +18,20 @@ class TrackTile extends StatefulWidget {
 }
 
 class _TrackTileState extends State<TrackTile> {
-  bool _isLoading = false;
-
-  Future<void> _handleTap() async {
-    setState(() {
-      _isLoading = true;
-    });
-
-    final image = Image.network(widget.track.album.images.first.url);
-    await precacheImage(image.image, context);
-
-    if (mounted) {
-      setState(() {
-        _isLoading = false;
-      });
-
-      Navigator.of(context).push(
-        MaterialPageRoute(
-          builder: (context) => TrackPlayerPage(
-            track: widget.track,
-            preloadedImage: image,
-          ),
-        ),
-      );
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      onTap: _isLoading ? null : _handleTap,
+      onTap: () {
+        precacheImage(widget.thumbnail.image, context);
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => TrackPlayerPage(
+              track: widget.track,
+              thumbnail: widget.thumbnail,
+            ),
+          ),
+        );
+      },
       dense: true,
       contentPadding: const EdgeInsets.only(left: 16, right: 0),
       leading: SizedBox(
