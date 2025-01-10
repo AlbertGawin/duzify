@@ -10,7 +10,7 @@ class CategoryButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        backgroundColor: AppColors.appBarBackground,
+        backgroundColor: AppColors.darkGray,
         foregroundColor: Colors.white,
       ),
       onPressed: () {},

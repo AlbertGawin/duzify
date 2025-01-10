@@ -25,7 +25,7 @@ class _SearchAppBarState extends State<SearchAppBar>
   Widget build(BuildContext context) {
     return AppBar(
       scrolledUnderElevation: 0,
-      backgroundColor: AppColors.appBarBackground,
+      backgroundColor: AppColors.darkGray,
       title: TextField(
         controller: _controller,
         focusNode: _focusNode,

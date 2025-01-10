@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:duzify/core/configs/theme/app_colors.dart';
 import 'package:duzify/domain/search/entities/track.dart';
 import 'package:duzify/presentation/track_player/pages/track_player.dart';
@@ -5,13 +6,8 @@ import 'package:flutter/material.dart';
 
 class TrackTile extends StatefulWidget {
   final TrackEntity track;
-  final Image thumbnail;
 
-  const TrackTile({
-    super.key,
-    required this.track,
-    required this.thumbnail,
-  });
+  const TrackTile({super.key, required this.track});
 
   @override
   State<TrackTile> createState() => _TrackTileState();
@@ -22,13 +18,9 @@ class _TrackTileState extends State<TrackTile> {
   Widget build(BuildContext context) {
     return ListTile(
       onTap: () {
-        precacheImage(widget.thumbnail.image, context);
         Navigator.of(context).push(
           MaterialPageRoute(
-            builder: (context) => TrackPlayerPage(
-              track: widget.track,
-              thumbnail: widget.thumbnail,
-            ),
+            builder: (context) => TrackPlayerPage(track: widget.track),
           ),
         );
       },
@@ -39,7 +31,18 @@ class _TrackTileState extends State<TrackTile> {
         height: 48,
         child: ClipRRect(
           borderRadius: BorderRadius.circular(4),
-          child: widget.thumbnail,
+          child: CachedNetworkImage(
+            imageUrl: widget.track.album.images.last.url,
+            fit: BoxFit.cover,
+            fadeInDuration: Duration(milliseconds: 200),
+            placeholder: (context, url) => Container(
+              decoration: BoxDecoration(
+                color: AppColors.darkGray,
+                borderRadius: BorderRadius.circular(4),
+              ),
+              child: Icon(Icons.music_note),
+            ),
+          ),
         ),
       ),
       title: Text(
