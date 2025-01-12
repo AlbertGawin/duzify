@@ -17,16 +17,15 @@ class TrackImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: 368,
       clipBehavior: Clip.antiAlias,
       decoration: BoxDecoration(
-        color: AppColors.darkGray,
+        color: AppColors.black,
         borderRadius: BorderRadius.circular(8),
       ),
       child: CachedNetworkImage(
         imageUrl: imageUrl,
-        fit: BoxFit.cover,
         fadeInDuration: Duration(milliseconds: 200),
+        fadeInCurve: Curves.easeInOut,
         placeholder: (context, url) => ImageFiltered(
           imageFilter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
           child: CachedNetworkImage(

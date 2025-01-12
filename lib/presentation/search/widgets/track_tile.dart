@@ -34,7 +34,7 @@ class _TrackTileState extends State<TrackTile> {
           child: CachedNetworkImage(
             imageUrl: widget.track.album.images.last.url,
             fit: BoxFit.cover,
-            fadeInDuration: Duration(milliseconds: 200),
+            fadeOutDuration: Duration(milliseconds: 200),
             placeholder: (context, url) => Container(
               decoration: BoxDecoration(
                 color: AppColors.darkGray,
